@@ -7,9 +7,13 @@ const io = socket(server);
 const port = 3000;
 
 
+// // Serve static files from the 'public' directory
+// app.use(express.static('public'));
+
+// Serve index.html as the default page
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
-  })
+});
   
   
 // Start the server
