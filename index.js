@@ -14,6 +14,31 @@ const port = 3000;
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
+
+io.on('connection', (socket) => {
+
+    // user connection message
+    console.log('A user connected');
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+    });
+
+
+    // listen for chat message
+
+    socket.on('userMessage', (msg) => {
+        console.log('message: ' + msg);
+        io.emit('userMessage', msg);
+    });
+
+
+});
+
+
+
+
+
   
   
 // Start the server
